@@ -1,0 +1,7 @@
+{
+  "name": "INF_Delivery",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

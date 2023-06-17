@@ -1,0 +1,32 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      <ion-searchbar (ionChange)="performSearch($event)" placeholder="Search restaurant"></ion-searchbar>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Tab 2</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+<ion-list>
+    <ion-item *ngFor="let eatery of eateries | async" (click)="addToCart(eatery)">
+      <ion-thumbnail slot="start">
+        <img [src]="eatery.image" />
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{ eatery.name }}</h2>
+        <p>{{ eatery.dish_type }}</p>
+        <p>Rating: {{ eatery.rating }}</p>
+      </ion-label>
+      <ion-button>
+        <ion-icon slot="icon-only" name="cart" (click)="addToCart(eatery)"></ion-icon>
+      </ion-button>
+      
+    </ion-item>
+  </ion-list>
+

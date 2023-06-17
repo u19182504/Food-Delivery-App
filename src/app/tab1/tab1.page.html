@@ -1,0 +1,49 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Home
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Home</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-img src="./assets/foodImage.webp" alt="Feast your eyes, indulge your taste buds."></ion-img>
+
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>
+        Nearby Restaurants
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <ion-list>
+      <ion-item *ngFor="let eatery of eateries" (click)="addToCart(eatery)">
+        <ion-thumbnail slot="start">
+          <img src="{{eatery.image}}" style="width: 100px; height: 100px;" alt="yumyum"/>
+        </ion-thumbnail>
+        <ion-label>
+          <h2>{{ eatery.name }}</h2>
+          <p>{{ eatery.dish_type }}</p>
+          <p>Rating: {{ eatery.rating }}<ion-icon name="star-outline"></ion-icon></p>
+          <p>{{ eatery.time }} mins</p>
+          <p>R{{ eatery.valueP }} for one meal</p>
+          <ion-text color="danger">
+            <p>{{ eatery.distance }} kms away</p>
+          </ion-text>
+        </ion-label>
+        <ion-button>
+          <ion-icon slot="icon-only" name="cart" (click)="addToCart(eatery)"></ion-icon>
+        </ion-button>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+
+

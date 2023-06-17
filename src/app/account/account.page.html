@@ -1,0 +1,94 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="danger">
+    <ion-title>Account</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!-- <ion-card>
+  <ion-item *ngFor="let profile of users">
+    <ion-avatar slot="start">
+      <img src="{{profile.displayPic}}" />
+    </ion-avatar>
+    <ion-label>
+      <h2>{{ profile.name }}</h2>
+      <p>{{ profile.email }}</p>
+      <p>{{ profile.cellNum }}</p>
+    </ion-label>
+    <ion-icon slot="end" name="pencil-outline"></ion-icon>
+  </ion-item>
+</ion-card> -->
+
+<ion-card>
+    <ion-button fill="clear" (click)="editUser()" color="danger">
+      Edit
+      <ion-icon slot="end" name="pencil-outline"></ion-icon>
+    </ion-button>
+  <ion-card-content>
+    <ion-item>
+      <ion-label position="stacked">Name</ion-label>
+      <ion-input [disabled]="!isEditMode" [(ngModel)]="user.name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Email</ion-label>
+      <ion-input [disabled]="!isEditMode" [(ngModel)]="user.email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">CellName</ion-label>
+      <ion-input [disabled]="!isEditMode" [(ngModel)]="user.cellNum"></ion-input>
+    </ion-item>
+  </ion-card-content>
+  <ion-button *ngIf="isEditMode" (click)="saveUser()" color="danger">Save</ion-button>
+</ion-card>
+
+<ion-item>
+  <ion-icon slot="end" name="home"></ion-icon>
+  <ion-text><h3>Manage Addresses</h3></ion-text>
+</ion-item>
+
+<ion-content>
+  <ion-title color="danger">
+    Past Orders
+  </ion-title>
+  <ion-list>
+    <ion-item *ngFor="let item of paidItems">
+      <ion-thumbnail slot="start">
+        <img src="{{ item.image }}" alt="{{ item.name }}" />
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{ item.name }}</h2>
+        <p>{{ item.dish_type }}</p>
+        <p>R{{ item.valueP }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  <ion-button fill="outline" color="danger" (click)="reorderItems()">REORDER</ion-button>
+  <ion-button fill="outline" color="dark" (click)="openModal()">GET HELP</ion-button>
+</ion-content>
+
+
+<ion-modal #helpModal>
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>
+        Get Help
+      </ion-title>
+      <ion-buttons slot="end">
+        <ion-button (click)="closeModal()">
+          <ion-icon name="close"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <p>For more information, call (011)-324-6648</p>
+  </ion-content>
+</ion-modal>
+
+
+
+
+
+
+
+
+
